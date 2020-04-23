@@ -1,5 +1,7 @@
 package me.suren.leetcodearena.medium;
 
+import me.suren.leetcodearena.util.NumberUtil;
+
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -84,21 +86,21 @@ public class Atoi {
                 else if(ch == '+') {
                     numberDetected = true;
                 }
-                else if(isDigit(ch) != -1) {
+                else if(NumberUtil.isDigit(ch) != -1) {
                     numberDetected = true;
-                    int a = isDigit(ch);
-                    z = z * 10 + isDigit(ch);
+                    int a = NumberUtil.isDigit(ch);
+                    z = z * 10 + NumberUtil.isDigit(ch);
                 }
                 else {
                     return 0;
                 }
             }
             else {
-                if(isDigit(ch) != -1) {
-                    int a = isDigit(ch);
-                    z = z * 10 + isDigit(ch);
+                if(NumberUtil.isDigit(ch) != -1) {
+                    int a = NumberUtil.isDigit(ch);
+                    z = z * 10 + NumberUtil.isDigit(ch);
 
-                    int y = getSignedInteger(z, sign);
+                    int y = NumberUtil.getSignedInteger(z, sign);
                     if(y != (int) z) {
                         return y;
                     }
@@ -112,25 +114,5 @@ public class Atoi {
         return (int) z * sign;
     }
 
-    private int getSignedInteger(long z, int sign) {
-        if(z > (int) Integer.MAX_VALUE) {
-            if(sign == 1)
-                return Integer.MAX_VALUE;
-            else
-                return Integer.MIN_VALUE;
-        }
-        else {
-            return (int) z;
-        }
-    }
 
-    private int isDigit(char ch) {
-
-        if(ch >= 48 && ch <= 57) {
-            return ch - 48;
-        }
-        else {
-            return -1;
-        }
-    }
 }
